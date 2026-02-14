@@ -1,0 +1,34 @@
+{
+  "models": [
+    {
+      "name": "llama3.1:8b",
+      "model": "llama3.1:8b",
+      "modified_at": "2024-12-01T10:00:00Z",
+      "size": 4661224676,
+      "digest": "abc123",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "llama",
+        "families": ["llama"],
+        "parameter_size": "8.0B",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "name": "mistral:7b",
+      "model": "mistral:7b",
+      "modified_at": "2024-11-15T08:00:00Z",
+      "size": 4109854016,
+      "digest": "def456",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "mistral",
+        "families": ["mistral"],
+        "parameter_size": "7.2B",
+        "quantization_level": "Q4_K_M"
+      }
+    }
+  ]
+}
