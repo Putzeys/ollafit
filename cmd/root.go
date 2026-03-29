@@ -4,17 +4,17 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/putzeys/putzeys-cli/internal/config"
-	"github.com/putzeys/putzeys-cli/internal/ui"
+	"github.com/putzeys/ollafit/internal/config"
+	"github.com/putzeys/ollafit/internal/ui"
 	"github.com/spf13/cobra"
 )
 
 var cfg config.Config
 
 var rootCmd = &cobra.Command{
-	Use:   "putzeys-cli",
+	Use:   "ollafit",
 	Short: "Check Ollama model compatibility with your hardware",
-	Long: `putzeys-cli detects your hardware (GPU, VRAM, RAM, CPU) and shows which
+	Long: `ollafit detects your hardware (GPU, VRAM, RAM, CPU) and shows which
 Ollama models can run on your machine. You can also download models directly.`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		return ui.RunTUI(cfg)

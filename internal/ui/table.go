@@ -5,8 +5,8 @@ import (
 	"strings"
 
 	"github.com/charmbracelet/lipgloss"
-	"github.com/putzeys/putzeys-cli/internal/hardware"
-	"github.com/putzeys/putzeys-cli/internal/models"
+	"github.com/putzeys/ollafit/internal/hardware"
+	"github.com/putzeys/ollafit/internal/models"
 )
 
 // RenderHardwareInfo renders the hardware detection results.

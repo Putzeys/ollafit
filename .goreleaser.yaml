@@ -16,10 +16,10 @@ builds:
       - arm64
     ldflags:
       - -s -w
-      - -X github.com/putzeys/putzeys-cli/cmd.Version={{.Version}}
-      - -X github.com/putzeys/putzeys-cli/cmd.Commit={{.Commit}}
-      - -X github.com/putzeys/putzeys-cli/cmd.BuildDate={{.Date}}
-    binary: putzeys-cli
+      - -X github.com/putzeys/ollafit/cmd.Version={{.Version}}
+      - -X github.com/putzeys/ollafit/cmd.Commit={{.Commit}}
+      - -X github.com/putzeys/ollafit/cmd.BuildDate={{.Date}}
+    binary: ollafit
 
 archives:
   - format: tar.gz

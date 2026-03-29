@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/putzeys/putzeys-cli/internal/ollama"
+	"github.com/putzeys/ollafit/internal/ollama"
 )
 
 // ModelsTab holds state for the models listing tab.

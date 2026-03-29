@@ -5,9 +5,9 @@ import (
 	"strings"
 
 	"github.com/charmbracelet/bubbles/progress"
-	"github.com/putzeys/putzeys-cli/internal/hardware"
-	"github.com/putzeys/putzeys-cli/internal/models"
-	"github.com/putzeys/putzeys-cli/internal/ollama"
+	"github.com/putzeys/ollafit/internal/hardware"
+	"github.com/putzeys/ollafit/internal/models"
+	"github.com/putzeys/ollafit/internal/ollama"
 )
 
 // PullTab holds state for the pull/download tab.

@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/putzeys/putzeys-cli/internal/ollama"
-	"github.com/putzeys/putzeys-cli/internal/ui"
+	"github.com/putzeys/ollafit/internal/ollama"
+	"github.com/putzeys/ollafit/internal/ui"
 	"github.com/spf13/cobra"
 )
 
@@ -48,7 +48,7 @@ func listLocalModels() error {
 
 	if len(localModels) == 0 {
 		fmt.Println(ui.WarningStyle.Render("No models installed locally."))
-		fmt.Println(ui.DimStyle.Render("Pull a model with: putzeys-cli pull <model>"))
+		fmt.Println(ui.DimStyle.Render("Pull a model with: ollafit pull <model>"))
 		return nil
 	}
 

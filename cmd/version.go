@@ -17,7 +17,7 @@ var versionCmd = &cobra.Command{
 	Use:   "version",
 	Short: "Print the version",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Printf("putzeys-cli %s\n", Version)
+		fmt.Printf("ollafit %s\n", Version)
 		fmt.Printf("  commit:  %s\n", Commit)
 		fmt.Printf("  built:   %s\n", BuildDate)
 	},

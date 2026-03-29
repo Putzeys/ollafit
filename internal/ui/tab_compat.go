@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/putzeys/putzeys-cli/internal/hardware"
-	"github.com/putzeys/putzeys-cli/internal/models"
-	"github.com/putzeys/putzeys-cli/internal/ollama"
+	"github.com/putzeys/ollafit/internal/hardware"
+	"github.com/putzeys/ollafit/internal/models"
+	"github.com/putzeys/ollafit/internal/ollama"
 )
 
 // CompatTab holds state for the compatibility check tab.

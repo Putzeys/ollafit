@@ -1,4 +1,4 @@
-module github.com/putzeys/putzeys-cli
+module github.com/putzeys/ollafit
 
 go 1.24.2
 

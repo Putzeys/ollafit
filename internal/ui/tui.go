@@ -7,9 +7,9 @@ import (
 	"github.com/charmbracelet/bubbles/progress"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
-	"github.com/putzeys/putzeys-cli/internal/config"
-	"github.com/putzeys/putzeys-cli/internal/hardware"
-	"github.com/putzeys/putzeys-cli/internal/ollama"
+	"github.com/putzeys/ollafit/internal/config"
+	"github.com/putzeys/ollafit/internal/hardware"
+	"github.com/putzeys/ollafit/internal/ollama"
 )
 
 const (
@@ -371,7 +371,7 @@ func (m TUIModel) View() string {
 	title := lipgloss.NewStyle().
 		Bold(true).
 		Foreground(lipgloss.Color("12")).
-		Render("  PUTZEYS-CLI")
+		Render("  OLLAFIT")
 	b.WriteString(title)
 	b.WriteString("\n")
 

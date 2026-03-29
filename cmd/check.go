@@ -6,10 +6,10 @@ import (
 	"os"
 	"strings"
 
-	"github.com/putzeys/putzeys-cli/internal/hardware"
-	"github.com/putzeys/putzeys-cli/internal/models"
-	"github.com/putzeys/putzeys-cli/internal/ollama"
-	"github.com/putzeys/putzeys-cli/internal/ui"
+	"github.com/putzeys/ollafit/internal/hardware"
+	"github.com/putzeys/ollafit/internal/models"
+	"github.com/putzeys/ollafit/internal/ollama"
+	"github.com/putzeys/ollafit/internal/ui"
 	"github.com/spf13/cobra"
 )
 

@@ -17,7 +17,7 @@ type Config struct {
 
 func DefaultConfig() Config {
 	return Config{
-		CLIName:             "putzeys-cli",
+		CLIName:             "ollafit",
 		OllamaHost:          "http://localhost:11434",
 		ModelSource:         "ollamadb",
 		VRAMOverheadPercent: 20.0,
@@ -39,11 +39,11 @@ func Load() (Config, error) {
 
 	configDir, err := os.UserConfigDir()
 	if err == nil {
-		viper.AddConfigPath(filepath.Join(configDir, "putzeys-cli"))
+		viper.AddConfigPath(filepath.Join(configDir, "ollafit"))
 	}
 	viper.AddConfigPath(".")
 
-	viper.SetEnvPrefix("PUTZEYS")
+	viper.SetEnvPrefix("OLLAFIT")
 	viper.AutomaticEnv()
 
 	if err := viper.ReadInConfig(); err != nil {

@@ -3,7 +3,7 @@ package models
 import (
 	"fmt"
 
-	"github.com/putzeys/putzeys-cli/internal/hardware"
+	"github.com/putzeys/ollafit/internal/hardware"
 )
 
 // CheckCompatibility evaluates whether a model can run on the given hardware.

@@ -1,132 +1,117 @@
-# putzeys-cli
+# ollafit
 
-CLI tool that detects your hardware (GPU, VRAM, RAM, CPU) and shows which [Ollama](https://ollama.com) models can run on your machine.
+[![Go](https://img.shields.io/badge/Go-1.24+-00ADD8?logo=go&logoColor=white)](https://go.dev)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/putzeys/ollafit?include_prereleases)](https://github.com/putzeys/ollafit/releases)
+
+Check which [Ollama](https://ollama.com) models can run on your hardware. Detects your GPU, VRAM, RAM, and CPU, then shows a color-coded compatibility table for 370+ models.
 
 ## Features
 
-- **Interactive TUI** — full-screen interface with 4 tabs (Hardware, Compatibilidade, Modelos, Pull)
-- **Hardware detection** — GPU (NVIDIA, AMD, Apple Silicon), CPU, RAM
-- **Model compatibility** — color-coded table showing what runs on your hardware
-- **Model browser** — 370+ models from ollama.com library, with search and filter
-- **Download models** — pull models via Ollama API with progress bar
-- **Cross-platform** — Linux, macOS, Windows (single binary, no CGO)
+- **Interactive TUI** with 4 tabs: Hardware, Compatibility, Models, Pull
+- **Hardware detection** for NVIDIA, AMD, Apple Silicon, and CPU-only setups
+- **Model compatibility** with color-coded verdicts (CAN RUN / DEGRADED / CAN'T RUN)
+- **Model browser** with search and local/remote toggle
+- **Download models** directly with progress bar
+- **Cross-platform** single binary (Linux, macOS, Windows) -- no CGO
 
 ## Install
 
-### From source (requires Go 1.24+)
+### GitHub Releases (recommended)
+
+Download the latest binary from [Releases](https://github.com/putzeys/ollafit/releases) and add it to your PATH.
+
+### From source
 
 ```bash
-git clone https://github.com/putzeys/putzeys-cli.git
-cd putzeys-cli
+go install github.com/putzeys/ollafit@latest
+```
+
+Or clone and build:
+
+```bash
+git clone https://github.com/putzeys/ollafit.git
+cd ollafit
 go install .
-```
-
-The binary will be installed to `~/go/bin/putzeys-cli`. Make sure `~/go/bin` is in your PATH:
-
-```bash
-# Add to ~/.zshrc or ~/.bashrc
-export PATH="$HOME/go/bin:$PATH"
-```
-
-### Cross-compile for other platforms
-
-```bash
-# Linux
-GOOS=linux GOARCH=amd64 go build -o putzeys-cli-linux .
-
-# Windows
-GOOS=windows GOARCH=amd64 go build -o putzeys-cli.exe .
-
-# Mac Intel
-GOOS=darwin GOARCH=amd64 go build -o putzeys-cli-intel .
-
-# Mac Apple Silicon
-GOOS=darwin GOARCH=arm64 go build -o putzeys-cli-arm .
 ```
 
 ## Usage
 
-### Interactive TUI (recommended)
+### Interactive TUI
 
 ```bash
-putzeys-cli
+ollafit
 ```
 
-Opens a full-screen TUI with 4 tabs:
+Opens a full-screen interface with 4 tabs:
 
-| Tab | Content |
-|---|---|
-| **1 Hardware** | CPU, GPU, RAM detected |
-| **2 Compatibilidade** | Color-coded table for 370+ models, cycle quantization with `q`, search with `/` |
-| **3 Modelos** | Browse remote/local models, toggle with `l`, search with `/` |
-| **4 Pull** | Type model name, check compatibility, download with progress bar |
+| Tab | Description |
+|-----|-------------|
+| **1 Hardware** | Detected CPU, GPU, RAM |
+| **2 Compatibility** | Color-coded table for 370+ models |
+| **3 Models** | Browse remote or local models |
+| **4 Pull** | Check compatibility and download models |
 
-#### Keyboard shortcuts
+### Keyboard shortcuts
 
 | Key | Action |
-|---|---|
+|-----|--------|
 | `Tab` / `1-4` | Switch tab |
 | `j/k` or `Up/Down` | Navigate list |
-| `/` | Search (Compatibilidade & Modelos tabs) |
-| `Enter` | Confirm action |
-| `Esc` | Cancel / exit search |
-| `q` (Compatibilidade) | Cycle quantization: Q4_K_M → Q8_0 → FP16 |
-| `l` (Modelos) | Toggle local/remote |
-| `ctrl+c` | Quit |
+| `/` | Search (Compatibility & Models) |
+| `q` | Cycle quantization: Q4_K_M, Q8_0, FP16 (Compatibility) |
+| `l` | Toggle local/remote (Models) |
+| `Enter` | Confirm / send to Pull |
+| `Esc` | Cancel |
+| `Ctrl+C` | Quit |
 
 ### CLI commands
 
 ```bash
-# Detect your hardware
-putzeys-cli scan
+# Detect hardware
+ollafit scan
 
-# Check which models can run on your machine
-putzeys-cli check
+# Check model compatibility
+ollafit check
+ollafit check --search llama
+ollafit check --quant FP16
+ollafit check --json
 
-# Search for specific models
-putzeys-cli check --search llama
-
-# Check with different quantization
-putzeys-cli check --quant FP16
-
-# JSON output
-putzeys-cli check --json
-
-# List available models
-putzeys-cli models --search llama
-
-# List locally installed models
-putzeys-cli models --local
+# Browse models
+ollafit models
+ollafit models --search llama
+ollafit models --local
 
 # Download a model (requires Ollama running)
-putzeys-cli pull llama3.2:1b
+ollafit pull llama3.2:1b
 ```
 
-## Compatibility Verdicts
+## Compatibility verdicts
 
 | Status | Meaning |
-|---|---|
+|--------|---------|
 | **CAN RUN** (green) | Model fits in GPU VRAM |
 | **DEGRADED** (yellow) | Needs CPU/RAM offload (slower) |
 | **CAN'T RUN** (red) | Insufficient total memory |
 
 ## Configuration
 
-Create `~/.config/putzeys-cli/config.yaml`:
+Create `~/.config/ollafit/config.yaml`:
 
 ```yaml
-cli_name: "putzeys-cli"
 ollama_host: "http://localhost:11434"
 model_source: "ollamadb"
 vram_overhead_percent: 20.0
 gpu_memory_fraction: 0.75  # Apple Silicon: % of unified memory for GPU
 ```
 
+Environment variables are also supported with the `OLLAFIT_` prefix (e.g., `OLLAFIT_OLLAMA_HOST`).
+
 ## Requirements
 
-- **Go 1.24+** to build from source
-- [Ollama](https://ollama.com) must be running for `models --local` and `pull` commands
-- GPU detection requires: `nvidia-smi` (NVIDIA), `rocm-smi` (AMD), or Apple Silicon
+- [Ollama](https://ollama.com) running locally for `models --local` and `pull` commands
+- GPU detection uses: `nvidia-smi` (NVIDIA), `rocm-smi` (AMD), or Apple Silicon system APIs
+- **Go 1.24+** only if building from source
 
 ## License
 

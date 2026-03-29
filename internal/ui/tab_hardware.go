@@ -1,7 +1,7 @@
 package ui
 
 import (
-	"github.com/putzeys/putzeys-cli/internal/hardware"
+	"github.com/putzeys/ollafit/internal/hardware"
 )
 
 // HardwareTab holds state for the hardware detection tab.

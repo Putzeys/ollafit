@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/putzeys/putzeys-cli/internal/hardware"
-	"github.com/putzeys/putzeys-cli/internal/ui"
+	"github.com/putzeys/ollafit/internal/hardware"
+	"github.com/putzeys/ollafit/internal/ui"
 	"github.com/spf13/cobra"
 )
 

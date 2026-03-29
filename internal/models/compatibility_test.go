@@ -3,7 +3,7 @@ package models
 import (
 	"testing"
 
-	"github.com/putzeys/putzeys-cli/internal/hardware"
+	"github.com/putzeys/ollafit/internal/hardware"
 )
 
 const GiB = 1024 * 1024 * 1024
