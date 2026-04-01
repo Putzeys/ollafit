@@ -19,12 +19,17 @@ func detectCPU() (CPUInfo, error) {
 
 	if len(cpus) > 0 {
 		info.Model = cpus[0].ModelName
-		info.Cores = int(cpus[0].Cores)
 
-		// Count logical processors (threads)
-		counts, err := cpu.Counts(true)
-		if err == nil {
-			info.Threads = counts
+		// Physical cores
+		physical, err := cpu.Counts(false)
+		if err == nil && physical > 0 {
+			info.Cores = physical
+		}
+
+		// Logical processors (threads)
+		logical, err := cpu.Counts(true)
+		if err == nil && logical > 0 {
+			info.Threads = logical
 		}
 	}
 
